@@ -88,6 +88,10 @@ def demander_nombre (nb_min,nb_max):
 
 chance = NB_CHANCE
 
+'''
+############# ci -dessous ave une DEBUT boucle while: ####################
+
+
 nombre = 0 # initialisation de la valeur a zero pour lancer le programme.
 
 while not nombre == NOMBRE_MAGIQUE:
@@ -104,10 +108,48 @@ while not nombre == NOMBRE_MAGIQUE:
     else :
         print("Le nombre magique est plus grand!")
         chance -= 1
-
+if chance == 0:
+    print("Vous avez perdue !!! ") # si chance = 0 on sort de la boucle et on affiche le message
+    print("Le nombre magique etait: {NOMBRE_MAGIQUE}.")
 
 
 # nombre = demander_nombre(NOMBRE_MIN,NOMBRE_MAX)
+
+############# FIN  ####################
+
+
+
+'''
+
+############# ci -dessous ave une DEBUT boucle for : ####################
+
+gagne = False
+
+for i in range(0,NB_CHANCE):
+    nombre = demander_nombre(NOMBRE_MIN,NOMBRE_MAX)
+    chance -= 1
+    print(f"Vous disposez de {chance} chances.")
+    if nombre == NOMBRE_MAGIQUE:
+        print(f"Bravo! Gagné! Vous avez trouvé le nombre magique! Vous avez ganné 1000 chances supplémentaires !!! ")
+        chance += 1000
+        print(f"Vous disposez désormais de {chance} chances.")
+        gagne = True
+        break
+
+    elif nombre > NOMBRE_MAGIQUE:
+        print("Le nombre magique est plus petit!")
+    else :
+        print("Le nombre magique est plus grand!")
+
+    
+if not gagne:
+    print("Vous avez perdue !!! ") # si chance = 0 on sort de la boucle et on affiche le message
+    print(f"Le nombre magique etait: {NOMBRE_MAGIQUE}.")
+
+############# FIN  ####################
+
+
+
 
 
 ########## FIN CORRECTION ############
