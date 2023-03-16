@@ -1,3 +1,5 @@
+import random #ici imortation du module random qui va nous permettre de generer un nombre aléatoire
+
 '''
 def demander_nombre(nb_min, nb_max):
     reponse = input("Quel est le nombre magique? (Entre 1 et 10)")
@@ -13,8 +15,13 @@ demander_nombre(1, 10)
 
 
 NOMBRE_MIN = 1              # constante (toujours en MAJUSCULE !)
-NOMBRE_MAX = 10            # constante (toujours en MAJUSCULE !)
-NOMBRE_MAGIQUE = 5        # constante (toujours en MAJUSCULE !)
+NOMBRE_MAX = 100            # constante (toujours en MAJUSCULE !)
+# NOMBRE_MAGIQUE = 5        # constante (toujours en MAJUSCULE !)
+NOMBRE_MAGIQUE = random.randint(1,100)        # ici pour generer un nombre aléatoire compris entre les 2 chiffres
+NB_CHANCE = 100
+
+
+
 
 
 '''
@@ -79,17 +86,24 @@ def demander_nombre (nb_min,nb_max):
 
 # ci dessous la correction :
 
+chance = NB_CHANCE
+
 nombre = 0 # initialisation de la valeur a zero pour lancer le programme.
 
 while not nombre == NOMBRE_MAGIQUE:
     nombre = demander_nombre(NOMBRE_MIN,NOMBRE_MAX)
+    print(f"Vous disposez de {chance} chances.")
     if nombre == NOMBRE_MAGIQUE:
-        print("Bravo! Vous avez trouvé le nombre magique!")
+        print(f"Bravo! Gagné! Vous avez trouvé le nombre magique! Vous avez ganné 1000 chances supplémentaires !!! ")
+        chance += 1000
+        print(f"Vous disposez de {chance} chances.")
         break
     elif nombre > NOMBRE_MAGIQUE:
         print("Le nombre magique est plus petit!")
+        chance -= 1
     else :
         print("Le nombre magique est plus grand!")
+        chance -= 1
 
 
 
